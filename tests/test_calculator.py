@@ -6,7 +6,7 @@ from calc import Calculator
 
 class TestCalc:
 
-    def setup_class(self):
+    def setup(self):
         self.calc = Calculator
         self.start_test = time.time()
 
@@ -24,7 +24,7 @@ class TestCalc:
             assert Calculator.multiply(self, 8, 8) == 63
 
     def test_adding_success(self):
-        assert Calculator.adding(self, 2, 2) == 5
+        assert Calculator.adding(self, 2, 2) == 4
 
     def test_subtraction_success(self):
         assert Calculator.subtraction(self, 2, 2) == 0
@@ -40,6 +40,6 @@ class TestCalc:
         self.end_test = time.time()
         filename = 'test_calculator_log.txt'
         lead_time = self.end_test - self.start_test
-        with open(filename, 'a', encoding='utf-8') as f:
+        with open(filename, 'w', encoding='utf-8') as f:
             f.write(f'\nДата выполнения теста: {time.asctime()}'
-                    f'\nВремя выполнения коллекции тестов: {round(lead_time, 2)} сек.\n')
+                    f'\nВремя выполнения коллекции тестов: {lead_time} сек.\n')
